@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c0c0c">
+<title>Oship Agency | Social Media, Fotografia, Videografia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f6f5f3;
+    --bg-soft-2:#efeeeb;
+    --ink:#0c0c0c;
+    --ink-soft:#3a3835;
+    --gray:#8a8680;
+    --gray-light:#c9c6c0;
+    --border:#e6e4e0;
+    --accent:#4b5563; /* muted slate, close to grayish per brief */
+    --accent-soft:#eef0f2;
+    --gold:#c9a227;
+    --gold-soft:#e4c766;
+    --radius:18px;
+    --maxw:1180px;
+    --font:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --ease-soft:cubic-bezier(.22,.61,.36,1);
+    --shadow-sm:0 2px 10px -4px rgba(12,12,12,0.10);
+    --shadow-md:0 16px 36px -16px rgba(12,12,12,0.22);
+    --shadow-lg:0 36px 70px -24px rgba(12,12,12,0.30);
+    --shadow-gold:0 14px 32px -12px rgba(201,162,39,0.45);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--gold); color:var(--ink);}
+  ::-webkit-scrollbar{width:11px; height:11px;}
+  ::-webkit-scrollbar-track{background:var(--bg-soft);}
+  ::-webkit-scrollbar-thumb{background:var(--gray-light); border-radius:10px; border:2px solid var(--bg-soft);}
+  ::-webkit-scrollbar-thumb:hover{background:var(--gold);}
+  html{scrollbar-color:var(--gray-light) var(--bg-soft);}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  section{padding:110px 0;}
+  h1,h2,h3{font-weight:800; letter-spacing:-0.025em; line-height:1.08; font-family:var(--font);}
+  h2{font-size:38px; margin-bottom:14px;}
+  .eyebrow{
+    text-transform:uppercase; font-size:12px; letter-spacing:0.14em; font-weight:700;
+    color:var(--gray); margin-bottom:14px; display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--gray-light); transition:width .4s var(--ease);}
+  .lede{color:var(--ink-soft); font-size:17px; max-width:560px;}
+
+  /* SCROLL REVEAL — background stays put, content fades/slides/blurs in */
+  .reveal{
+    opacity:0; transform:translateY(30px) scale(.985);
+    filter:blur(6px);
+    transition:opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease);
+    will-change:opacity, transform, filter;
+  }
+  .reveal.in-view{opacity:1; transform:translateY(0) scale(1); filter:blur(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; filter:none; transition:none;}
+  }
+
+  /* SCROLL PROGRESS BAR */
+  .scroll-progress{
+    position:fixed; top:0; left:0; height:3px; width:0%; z-index:200;
+    background:linear-gradient(90deg, var(--gold), var(--gold-soft));
+    box-shadow:0 0 12px rgba(201,162,39,0.5);
+  }
+
+  /* BACK TO TOP */
+  .back-to-top{
+    position:fixed; right:24px; bottom:24px; width:48px; height:48px; border-radius:50%;
+    background:var(--ink); color:#fff; border:none; cursor:pointer; z-index:80;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transform:translateY(14px) scale(.88);
+    transition:opacity .35s var(--ease), transform .35s var(--ease), background .2s ease, color .2s ease;
+    box-shadow:var(--shadow-md);
+  }
+  .back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0) scale(1);}
+  .back-to-top:hover{background:var(--gold); color:var(--ink);}
+  @media (max-width:560px){ .back-to-top{right:16px; bottom:16px; width:42px; height:42px;} }
+  @media (prefers-reduced-motion: reduce){ .back-to-top{transition:opacity .2s ease;} }
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    transition:box-shadow .3s ease, background .3s ease;
+  }
+  header.scrolled{box-shadow:0 8px 30px -22px rgba(12,12,12,0.4); background:rgba(255,255,255,0.94);}
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:800; font-size:18px; letter-spacing:-0.01em;}
+  .brand img{width:34px; height:34px; border-radius:50%; transition:transform .4s var(--ease);}
+  .brand:hover img{transform:rotate(-10deg) scale(1.08);}
+  .navlinks{display:flex; gap:34px; font-size:14px; font-weight:600; color:var(--ink-soft);}
+  .navlinks a{position:relative; padding-bottom:2px;}
+  .navlinks a::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--gold);
+    transition:width .25s var(--ease);
+  }
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a:hover::after{width:100%;}
+  .navright{display:flex; align-items:center; gap:18px;}
+  .langtoggle{
+    border:1px solid var(--border); background:var(--bg-soft); border-radius:999px;
+    padding:6px 4px; font-size:12px; font-weight:700; letter-spacing:0.03em; cursor:pointer;
+    display:flex; gap:2px;
+  }
+  .langtoggle span{padding:4px 10px; border-radius:999px; color:var(--gray); transition:background .25s var(--ease), color .25s var(--ease);}
+  .langtoggle span.active{background:var(--ink); color:#fff;}
+  .btn{
+    position:relative; overflow:hidden;
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:#fff; padding:13px 24px; border-radius:999px;
+    font-weight:700; font-size:14px; border:1px solid var(--ink); cursor:pointer;
+    box-shadow:var(--shadow-sm);
+    transition:opacity .2s ease, transform .35s var(--ease), box-shadow .35s var(--ease), background .2s ease;
+  }
+  .btn::before{
+    content:""; position:absolute; top:0; left:-60%; width:45%; height:100%;
+    background:linear-gradient(115deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform:skewX(-18deg); transition:left .65s ease; pointer-events:none;
+  }
+  .btn:hover::before{left:135%;}
+  .btn:hover{opacity:0.92; transform:translateY(-2px); box-shadow:var(--shadow-md);}
+  .btn:active{transform:translateY(0) scale(.97);}
+  .btn.outline{background:transparent; color:var(--ink); border:1px solid var(--border); box-shadow:none;}
+  .btn.outline:hover{border-color:var(--ink); opacity:1;}
+  .btn-sm{padding:10px 18px; font-size:13px;}
+  @media (prefers-reduced-motion: reduce){
+    .btn{transition:opacity .2s ease;}
+    .btn:hover{transform:none;}
+    .btn::before{display:none;}
+  }
+  .btn.is-loading{pointer-events:none; opacity:.8;}
+  .btn.is-loading .btn-arrow{display:none;}
+  .btn.is-loading::after{
+    content:""; width:14px; height:14px; margin-left:2px; display:inline-block;
+    border:2px solid currentColor; border-top-color:transparent; border-radius:50%; opacity:.85;
+    animation:btnSpin .6s linear infinite;
+  }
+  @keyframes btnSpin{to{transform:rotate(360deg);}}
+
+  /* BURGER + DRAWER */
+  .burger{
+    width:44px; height:44px; border-radius:12px; border:1px solid var(--border);
+    background:var(--bg-soft); display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:5px; cursor:pointer;
+  }
+  .burger span{display:block; width:20px; height:2px; background:var(--ink); border-radius:2px; transition:transform .2s ease, opacity .2s ease;}
+  body.drawer-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  body.drawer-open .burger span:nth-child(2){opacity:0;}
+  body.drawer-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .drawer-overlay{
+    position:fixed; inset:0; background:rgba(12,12,12,0.45); z-index:90;
+    opacity:0; pointer-events:none; transition:opacity .3s ease, backdrop-filter .3s ease;
+    backdrop-filter:blur(0px);
+  }
+  body.drawer-open .drawer-overlay{opacity:1; pointer-events:auto; backdrop-filter:blur(3px);}
+
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:400px; max-width:88vw;
+    background:var(--ink); color:#fff; z-index:100;
+    transform:translateX(100%); transition:transform .45s var(--ease);
+    display:flex; flex-direction:column; padding:28px 30px;
+    box-shadow:var(--shadow-lg);
+  }
+  body.drawer-open .drawer{transform:translateX(0);}
+  .drawer-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:56px;}
+  .drawer .brand{color:#fff;}
+  .drawer-close{
+    width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,0.25);
+    background:transparent; color:#fff; font-size:15px; cursor:pointer;
+    transition:transform .3s var(--ease), border-color .2s ease;
+  }
+  .drawer-close:hover{transform:rotate(90deg); border-color:#fff;}
+  .drawer-links{
+    display:flex; flex-direction:column; gap:6px; flex:1;
+    opacity:0; transform:translateY(14px);
+    transition:opacity .4s var(--ease) .08s, transform .4s var(--ease) .08s;
+  }
+  body.drawer-open .drawer-links{opacity:1; transform:translateY(0);}
+  .drawer-link{
+    display:flex; align-items:baseline; gap:16px; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,0.1);
+    font-size:24px; font-weight:800; letter-spacing:-0.01em; color:#fff;
+    transition:opacity .15s ease, transform .15s ease, padding-left .25s var(--ease);
+  }
+  .drawer-link:hover{opacity:0.7; transform:translateX(4px); padding-left:10px;}
+  .drawer-link .idx{font-size:12px; font-weight:700; color:rgba(255,255,255,0.4);}
+  .drawer-foot{
+    padding-top:24px; margin-top:auto; border-top:1px solid rgba(255,255,255,0.1);
+    font-size:13px; color:rgba(255,255,255,0.5); display:flex; flex-direction:column; gap:6px;
+  }
+  .drawer-foot a{font-weight:700; color:#fff; font-size:14px;}
+  body.drawer-open{overflow:hidden;}
+
+  /* HERO */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:150px 0 130px;
+    background:
+      radial-gradient(ellipse 900px 700px at 50% 30%, rgba(201,162,39,0.07), transparent 65%),
+      var(--ink);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    color:#fff;
+  }
+  .hero-noise{
+    position:absolute; inset:0; pointer-events:none; opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .hero-orbs{position:absolute; inset:0; overflow:hidden; pointer-events:none;}
+  .hero-orb{position:absolute; border-radius:50%; filter:blur(60px); opacity:.6; animation:orbFloat 20s ease-in-out infinite;}
+  .hero-orb-1{width:340px; height:340px; background:radial-gradient(circle, rgba(201,162,39,0.38), transparent 70%); top:-90px; left:6%; animation-duration:19s;}
+  .hero-orb-2{width:280px; height:280px; background:radial-gradient(circle, rgba(255,255,255,0.09), transparent 70%); bottom:-70px; right:8%; animation-duration:23s; animation-delay:-5s;}
+  .hero-orb-3{width:220px; height:220px; background:radial-gradient(circle, rgba(201,162,39,0.2), transparent 70%); top:38%; right:26%; animation-duration:21s; animation-delay:-11s;}
+  @keyframes orbFloat{
+    0%,100%{transform:translate(0,0) scale(1);}
+    33%{transform:translate(22px,-32px) scale(1.08);}
+    66%{transform:translate(-26px,20px) scale(0.94);}
+  }
+  @media (prefers-reduced-motion: reduce){ .hero-orb{animation:none;} }
+  .hero-spotlight{
+    position:absolute; width:520px; height:520px; border-radius:50%; pointer-events:none;
+    transform:translate(-50%,-50%); left:-9999px; top:-9999px; opacity:0;
+    background:radial-gradient(circle, rgba(201,162,39,0.16), transparent 68%);
+    transition:opacity .4s ease; z-index:0;
+  }
+  .hero-wrap-center{position:relative; z-index:1; display:flex; justify-content:center;}
+  .hero .eyebrow{color:rgba(255,255,255,0.55);}
+  .hero .eyebrow::before{background:rgba(255,255,255,0.25);}
+  .hero .eyebrow.center{justify-content:center;}
+  .hero-badge{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:9px 20px 9px 16px; border-radius:999px;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14);
+  }
+  .hero-badge::before{content:none;}
+  .hero-badge-dot{
+    width:6px; height:6px; border-radius:50%; flex-shrink:0;
+    background:var(--gold); box-shadow:0 0 9px 2px rgba(201,162,39,0.65);
+  }
+  .hero h1{font-size:56px; color:#fff;}
+  .hero h1 .gold, .gold{color:var(--gold);}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:38px;}
+  .hero-actions .btn{
+    background:var(--gold); color:var(--ink); border-color:var(--gold);
+    box-shadow:var(--shadow-gold);
+    transition:opacity .2s ease, transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .hero-actions .btn:hover{opacity:0.94; transform:translateY(-3px); box-shadow:0 20px 40px -12px rgba(201,162,39,0.65);}
+  .hero-actions .btn.outline{
+    background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.3); box-shadow:none;
+    transition:border-color .2s ease, opacity .2s ease, transform .35s var(--ease);
+  }
+  .hero-actions .btn.outline:hover{border-color:#fff; opacity:1; transform:translateY(-3px);}
+  .btn-arrow{transition:transform .15s ease; flex-shrink:0;}
+  .btn:hover .btn-arrow{transform:translateX(3px);}
+  .hero-mark{
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    padding:20px 10px; width:100%; max-width:640px;
+  }
+  .hero-badge{max-width:100%;}
+  .hero-mark-logo-wrap{position:relative; display:flex; align-items:center; justify-content:center; margin:28px 0 30px;}
+  .hero-mark-logo-glow{
+    position:absolute; width:176px; height:176px; border-radius:50%;
+    background:radial-gradient(circle, rgba(201,162,39,0.38), transparent 70%);
+    filter:blur(4px); animation:heroGlowPulse 4.5s ease-in-out infinite; pointer-events:none;
+  }
+  @keyframes heroGlowPulse{
+    0%,100%{opacity:0.5; transform:scale(0.92);}
+    50%{opacity:0.95; transform:scale(1.06);}
+  }
+  .hero-mark-logo-ring{
+    position:relative; z-index:1;
+    width:118px; height:118px; border-radius:50%;
+    padding:0; border:1.5px solid rgba(255,255,255,0.75); background:var(--ink);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .hero-mark-logo{width:100%; height:100%; border-radius:50%;}
+  .hero-mark-name{
+    font-size:52px; font-weight:800; letter-spacing:0.02em; color:#fff; line-height:1.05;
+  }
+  .hero-mark-tagline{
+    margin-top:18px; font-size:16px; font-weight:600; letter-spacing:0.06em;
+    color:rgba(255,255,255,0.65); text-transform:uppercase;
+  }
+  .hero-mark-tagline i{color:rgba(255,255,255,0.4); font-style:normal; margin:0 10px;}
+  .hero-mark-divider{width:44px; height:1px; background:rgba(255,255,255,0.2); margin:34px 0;}
+  .hero-mark-info{
+    display:flex; align-items:stretch; gap:0;
+    background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09);
+    border-radius:18px; padding:22px 34px;
+    transition:border-color .3s ease, background .3s ease, transform .3s var(--ease);
+  }
+  .hero-mark-info:hover{border-color:rgba(201,162,39,0.35); background:rgba(255,255,255,0.05); transform:translateY(-2px);}
+  .hero-mark-info .statcircle{transition:transform .3s var(--ease);}
+  .hero-mark-info .statrow:hover .statcircle{transform:scale(1.12);}
+  .hero-info-item{padding:0 26px;}
+  .hero-info-divider{width:1px; align-self:stretch; background:rgba(255,255,255,0.12); margin:0 2px;}
+  .hero-mark-info .statlabel{
+    display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.1em;
+    color:rgba(255,255,255,0.45); margin-bottom:8px;
+  }
+  .hero-mark-info b{font-size:18px; color:#fff; font-weight:700;}
+  .hero-mark-info .statrow{display:flex; align-items:center; gap:10px;}
+  .hero-mark-info .statcircle{
+    width:30px; height:30px; border-radius:50%; overflow:hidden; flex-shrink:0;
+    border:1px solid rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,0.06);
+  }
+  .hero-mark-info .statcircle img, .hero-mark-info .statcircle svg{width:100%; height:100%; display:block;}
+  .hero-scroll-cue{
+    position:absolute; left:50%; bottom:30px; transform:translateX(-50%); z-index:1;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    color:rgba(255,255,255,0.38); transition:color .2s ease;
+  }
+  .hero-scroll-cue:hover{color:rgba(255,255,255,0.8);}
+  .hero-scroll-cue-line{width:1px; height:30px; background:currentColor;}
+  .hero-scroll-cue-arrow{display:flex; animation:heroScrollBounce 2s ease-in-out infinite;}
+  @keyframes heroScrollBounce{0%,100%{transform:translateY(0);} 50%{transform:translateY(5px);}}
+  @media (prefers-reduced-motion: reduce){
+    .hero-mark-logo-glow{animation:none; opacity:0.75;}
+    .hero-scroll-cue-arrow{animation:none;}
+  }
+  .hero-slogan{
+    margin-top:40px; padding-top:34px; border-top:1px solid rgba(255,255,255,0.1);
+    display:flex; flex-direction:column; align-items:center; gap:16px;
+  }
+  .hero-slogan [data-i18n-lang]{
+    display:inline-block; font-size:17px; font-weight:500; font-style:italic;
+    color:rgba(255,255,255,0.4); letter-spacing:0.005em; max-width:480px;
+    transform:rotate(-2.5deg); line-height:1.5;
+  }
+  .slogan-btn{
+    display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700;
+    color:var(--gold); border:1px solid rgba(201,162,39,0.4); border-radius:999px;
+    padding:9px 18px; transition:background .15s ease;
+  }
+  .slogan-btn:hover{background:rgba(201,162,39,0.1);}
+
+  /* ABOUT */
+  .about .wrap{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start;}
+  .about .wrap.about-wrap-single{display:block; max-width:720px;}
+  .ig-card{
+    display:flex; align-items:center; gap:16px; margin-top:30px; padding:18px 20px;
+    border:1px solid var(--border); border-radius:16px; background:var(--bg-soft);
+    box-shadow:var(--shadow-sm);
+    transition:border-color .3s ease, transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .ig-card:hover{border-color:var(--ink); transform:translateY(-3px); box-shadow:var(--shadow-md);}
+  .ig-card-icon{
+    width:42px; height:42px; border-radius:50%; background:var(--ink); color:#fff;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    transition:transform .3s var(--ease);
+  }
+  .ig-card:hover .ig-card-icon{transform:scale(1.1) rotate(-6deg);}
+  .ig-card-arrow{transition:transform .3s var(--ease);}
+  .ig-card:hover .ig-card-arrow{transform:translateX(4px);}
+  .ig-card-icon svg{width:20px; height:20px;}
+  .ig-card-text{display:flex; flex-direction:column; gap:2px; font-size:13.5px; color:var(--ink-soft);}
+  .ig-card-text b{font-size:15px; color:var(--ink); font-weight:800;}
+  .ig-card-arrow{margin-left:auto; font-size:18px; color:var(--gray);}
+  .about-copy-wide p{font-size:19px;}
+  #onas{
+    background:radial-gradient(ellipse 900px 500px at 50% 0%, rgba(201,162,39,0.05), transparent 70%), var(--bg);
+  }
+  .founder{background:var(--bg-soft);}
+  .about-copy p{color:var(--ink-soft); margin-bottom:16px; font-size:16px;}
+  .founder-heading{display:flex; align-items:center; gap:22px; margin-bottom:16px;}
+  .founder-heading h2{margin-bottom:0; font-size:56px;}
+  .founder-heading-avatar{width:112px; height:112px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid var(--border); transition:transform .4s var(--ease), border-color .3s ease; box-shadow:var(--shadow-sm);}
+  .founder-heading:hover .founder-heading-avatar{transform:scale(1.05) rotate(-3deg); border-color:var(--gold);}
+  .founder-line-row{
+    display:flex; align-items:center; justify-content:flex-start; gap:28px; flex-wrap:wrap;
+    margin-top:26px; padding-top:26px; border-top:1px solid var(--border);
+  }
+  .about-copy .founder-line{display:flex; align-items:center; gap:12px;}
+  .about-copy .founder-line img{width:46px; height:46px; border-radius:50%;}
+  .about-copy .founder-line b{font-size:14px;}
+  .about-copy .founder-line span{font-size:13px; color:var(--gray); display:block;}
+  .founder-social{display:flex; flex-direction:column; align-items:flex-start; gap:10px;}
+  .founder-social-label{font-size:11px; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:0.08em; white-space:nowrap;}
+  .founder-social-row{display:flex; gap:12px;}
+  .founder-social-ring{
+    width:40px; height:40px; border-radius:50%; padding:2px;
+    background:linear-gradient(45deg,#0c0c0c,#8a8680,#0c0c0c);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .founder-social-item:hover .founder-social-ring{transform:translateY(-2px) scale(1.08) rotate(-6deg); box-shadow:var(--shadow-sm);}
+  .founder-social-ring-inner{
+    width:100%; height:100%; border-radius:50%; background:#fff;
+    display:flex; align-items:center; justify-content:center;
+    border:2px solid #fff; color:var(--ink);
+  }
+  .founder-social-ring-inner svg{width:16px; height:16px;}
+  @media (max-width:560px){
+    .founder-line-row{flex-direction:column; align-items:flex-start; gap:18px;}
+  }
+
+  /* Founder story card - IG stories style auto-advancing */
+  .story-card{
+    background:var(--ink); border-radius:26px; padding:22px; color:#fff; position:relative;
+    max-width:340px; margin:0 auto; aspect-ratio:9/14; display:flex; flex-direction:column; overflow:hidden;
+  }
+  .story-progress{display:flex; gap:5px; margin-bottom:16px;}
+  .story-progress .seg{height:3px; flex:1; background:rgba(255,255,255,0.25); border-radius:3px; overflow:hidden;}
+  .story-progress .seg i{display:block; height:100%; width:0%; background:#fff;}
+  .story-head{display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .story-head img{width:30px; height:30px; border-radius:50%;}
+  .story-head b{font-size:13px;}
+  .story-head span{font-size:11px; color:rgba(255,255,255,0.55); display:block;}
+  .story-body{flex:1; display:flex; flex-direction:column; justify-content:center;}
+  .story-slide{display:none;}
+  .story-slide.active{display:block; animation:fadein .35s ease;}
+  @keyframes fadein{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+  .story-slide .tag{font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,255,255,0.5); font-weight:700; margin-bottom:10px;}
+  .story-slide h4{font-size:23px; font-weight:800; letter-spacing:-0.01em; margin-bottom:10px;}
+  .story-slide p{font-size:14px; color:rgba(255,255,255,0.72);}
+  .story-nav{position:absolute; inset:0; display:flex; z-index:5;}
+  .story-nav div{flex:1; cursor:pointer;}
+
+  /* OFERTA — interactive service switcher */
+  .oferta{background:var(--bg-soft);}
+  .service-switch{display:flex; gap:16px; margin:50px 0 40px; flex-wrap:wrap;}
+  .service-btn{
+    display:flex; align-items:center; gap:12px; padding:18px 24px; border-radius:16px;
+    background:#fff; border:1px solid var(--border); cursor:pointer;
+    font-size:14.5px; font-weight:700; color:var(--ink-soft);
+    box-shadow:var(--shadow-sm);
+    transition:border-color .3s ease, background .3s ease, color .3s ease, transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .service-btn:hover{transform:translateY(-3px); border-color:var(--gray-light); box-shadow:var(--shadow-md);}
+  .service-btn.active{background:var(--ink); border-color:var(--ink); color:#fff; box-shadow:var(--shadow-md);}
+  .service-btn-icon{
+    width:34px; height:34px; border-radius:10px; background:var(--bg-soft); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; color:var(--ink);
+    transition:background .3s ease, color .3s ease, transform .3s var(--ease);
+  }
+  .service-btn:hover .service-btn-icon{transform:scale(1.1) rotate(-6deg);}
+  .service-btn-icon svg{width:18px; height:18px;}
+  .service-btn.active .service-btn-icon{background:rgba(255,255,255,0.12); color:#fff;}
+  .service-panel{display:none; animation:panelIn .4s ease;}
+  .service-panel.active{display:block;}
+  @keyframes panelIn{from{opacity:0; transform:translateY(14px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);}}
+  .service-panel > p{font-size:16.5px; color:var(--ink-soft); max-width:640px; margin-bottom:28px;}
+  .desc-serif{font-family:Georgia,"Times New Roman",serif; font-size:17.5px; line-height:1.65; letter-spacing:0.005em;}
+  .client-chips-label{
+    font-size:11px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700;
+    color:var(--gray); margin-bottom:14px;
+  }
+  .smm-highlight{margin:2px 0 30px;}
+  .smm-highlight-big{margin-bottom:18px; max-width:640px;}
+  .smm-highlight-num{font-size:clamp(22px,3.4vw,32px); font-weight:800; letter-spacing:-0.01em; color:var(--ink); line-height:1.3;}
+  .smm-highlight-num .gold{color:var(--gold);}
+  .smm-highlight-note{
+    font-family:Georgia,"Times New Roman",serif; font-style:italic; font-weight:600;
+    font-size:13.5px; letter-spacing:0.01em; color:var(--gray);
+  }
+  .client-chips{display:flex; gap:12px; flex-wrap:wrap;}
+  .client-chips span{
+    padding:10px 18px; border-radius:999px; background:#fff; border:1px solid var(--border);
+    font-size:14px; font-weight:700; color:var(--ink);
+  }
+  .client-chips.empty span{
+    background:transparent; border:1px dashed var(--gray-light); color:var(--gray); font-weight:600;
+  }
+  button.client-chip{
+    padding:10px 18px; border-radius:999px; background:#fff; border:1px solid var(--border);
+    font-size:14px; font-weight:700; color:var(--ink); cursor:pointer; font-family:inherit;
+    display:inline-flex; align-items:center; gap:8px; box-shadow:var(--shadow-sm);
+    transition:background .25s ease, border-color .25s ease, transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  button.client-chip::after{
+    content:"↗"; font-size:12px; color:var(--gray); transition:color .2s ease, transform .3s var(--ease);
+  }
+  button.client-chip:hover{background:var(--bg-soft); border-color:var(--ink); transform:translateY(-2px); box-shadow:var(--shadow-md);}
+  button.client-chip:hover::after{color:var(--ink); transform:translate(2px,-2px);}
+  button.client-chip.active{background:var(--ink); border-color:var(--ink); color:#fff; box-shadow:var(--shadow-md);}
+  button.client-chip.active::after{color:#fff;}
+  .client-detail{
+    display:none; margin-top:22px; padding:22px 26px; border-radius:18px;
+    background:var(--bg-soft); border:1px solid var(--border); position:relative; max-width:420px;
+    box-shadow:var(--shadow-md);
+  }
+  .client-detail.show{display:block; animation:panelIn .4s var(--ease);}
+  .client-detail-close{
+    position:absolute; top:14px; right:16px; background:none; border:none; cursor:pointer;
+    font-size:20px; line-height:1; color:var(--gray); font-family:inherit; padding:4px;
+  }
+  .client-detail-close:hover{color:var(--ink);}
+  .client-detail-head{display:flex; align-items:center; gap:12px; margin-bottom:6px; padding-right:20px;}
+  .client-detail-logo{width:44px; height:44px; border-radius:50%; object-fit:cover; flex-shrink:0; border:1px solid var(--border); background:#fff; display:none;}
+  .client-detail-logo.show{display:block;}
+  .client-detail-name{font-size:17px; font-weight:800; color:var(--ink); margin-bottom:4px;}
+  .client-detail-followers{font-size:14px; color:var(--ink-soft); margin-bottom:2px;}
+  .client-detail-since{font-size:13px; color:var(--gray); margin-bottom:2px;}
+  .client-detail-stats-label{display:none; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-top:6px;}
+  .client-detail-stats-label.show{display:block;}
+  .client-detail-stats{display:none; gap:14px; flex-wrap:wrap; margin:4px 0 2px;}
+  .client-detail-stats.show{display:flex;}
+  .client-detail-stat{font-size:13px; color:var(--ink-soft);}
+  .client-detail-stat b{color:var(--ink); font-weight:700;}
+  .client-detail-updated{font-size:12px; color:var(--gray); margin-bottom:16px;}
+  .client-detail-link{
+    display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:700;
+    color:var(--ink); text-decoration:none; border-bottom:1px solid var(--ink);
+  }
+  .client-detail-link:hover{color:var(--gold); border-color:var(--gold);}
+  .client-detail-gallery{display:none; gap:8px; margin:2px 0 16px; flex-wrap:wrap;}
+  .client-detail-gallery.show{display:flex;}
+  .client-detail-gallery-thumb{
+    width:56px; height:56px; border-radius:10px; overflow:hidden; cursor:pointer; border:1px solid var(--border);
+    flex-shrink:0; padding:0; background:none; transition:transform .3s var(--ease), border-color .25s ease, box-shadow .3s var(--ease);
+  }
+  .client-detail-gallery-thumb img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s var(--ease);}
+  .client-detail-gallery-thumb:hover{transform:translateY(-3px) scale(1.05); border-color:var(--gold); box-shadow:var(--shadow-sm);}
+  .client-detail-gallery-thumb:hover img{transform:scale(1.12);}
+  .client-detail-gallery-more{
+    width:56px; height:56px; border-radius:10px; background:var(--ink); color:#fff; font-size:12px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; text-align:center;
+    line-height:1.15; border:none; font-family:inherit; padding:2px;
+  }
+
+  /* GALERIA ZDJĘĆ — coverflow overlay */
+  .photo-gallery-overlay{
+    position:fixed; inset:0; background:rgba(8,8,8,0.94); z-index:500;
+    display:none; align-items:center; justify-content:center; flex-direction:column; padding:70px 16px 30px;
+  }
+  .photo-gallery-overlay.show{display:flex;}
+  .photo-gallery-topbar{
+    position:absolute; top:0; left:0; right:0; display:flex; align-items:center; justify-content:space-between;
+    padding:20px 26px;
+  }
+  .photo-gallery-title{color:#fff; font-size:15px; font-weight:700; letter-spacing:0.02em;}
+  .photo-gallery-close{
+    background:none; border:none; color:#fff; font-size:30px; line-height:1; cursor:pointer; padding:2px 8px; opacity:0.75;
+  }
+  .photo-gallery-close:hover{opacity:1; color:var(--gold);}
+  .coverflow-stage{
+    position:relative; width:100%; max-width:1040px; flex:1; display:flex; align-items:center; justify-content:center;
+    perspective:1400px; touch-action:pan-y; min-height:0;
+  }
+  .coverflow-track{position:relative; width:100%; height:100%;}
+  .coverflow-item{
+    position:absolute; top:50%; left:50%; border-radius:12px; overflow:hidden; cursor:pointer;
+    box-shadow:0 25px 60px -15px rgba(0,0,0,0.6);
+    transition:transform .5s cubic-bezier(.22,.61,.36,1), opacity .5s ease, width .5s ease, height .5s ease;
+  }
+  .coverflow-item img{width:100%; height:100%; object-fit:cover; display:block; pointer-events:none;}
+  .coverflow-arrow{
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.25); color:#fff; width:46px; height:46px;
+    border-radius:50%; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background .25s ease, border-color .25s ease, transform .3s var(--ease); flex-shrink:0; z-index:20; font-family:inherit;
+  }
+  .coverflow-arrow:hover{background:rgba(201,162,39,0.18); border-color:var(--gold); transform:translateY(-50%) scale(1.08);}
+  .coverflow-arrow.prev:hover, .coverflow-arrow.next:hover{transform:translateY(-50%) scale(1.08);}
+  .coverflow-arrow.prev{position:absolute; left:6px; top:50%; transform:translateY(-50%);}
+  .coverflow-arrow.next{position:absolute; right:6px; top:50%; transform:translateY(-50%);}
+  .photo-gallery-hint{color:rgba(255,255,255,0.5); font-size:12.5px; margin-top:16px; letter-spacing:0.01em; text-align:center;}
+  .photo-gallery-counter{color:rgba(255,255,255,0.6); font-size:13px; margin-top:14px;}
+  @media (max-width:640px){
+    .coverflow-arrow{width:36px; height:36px; font-size:16px;}
+    .photo-gallery-topbar{padding:14px 16px;}
+    .photo-gallery-hint{padding:0 20px;}
+  }
+
+  .oferta{scroll-margin-top:90px;}
+  .anchor-placeholder{display:block; scroll-margin-top:90px;}
+  .oferta-contact{
+    margin-top:56px; padding-top:44px; border-top:1px solid var(--border); max-width:640px;
+  }
+  .oferta-contact h3{font-size:24px; font-weight:800; letter-spacing:-0.01em; margin-bottom:10px;}
+  .oferta-contact > p{font-size:15px; color:var(--gray); margin-bottom:24px;}
+  .oferta-form{display:flex; flex-direction:column; gap:14px;}
+  .oferta-form .form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .oferta-form input, .oferta-form select, .oferta-form textarea{
+    width:100%; padding:13px 16px; border-radius:12px; border:1px solid var(--border);
+    background:#fff; font-family:inherit; font-size:14.5px; color:var(--ink); resize:vertical;
+    transition:border-color .25s ease, box-shadow .25s ease;
+  }
+  .oferta-form input:focus, .oferta-form select:focus, .oferta-form textarea:focus{
+    outline:none; border-color:var(--ink); box-shadow:0 0 0 4px rgba(201,162,39,0.15);
+  }
+  .oferta-form select{color:var(--ink); appearance:auto;}
+  .oferta-form-foot{display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:6px;}
+  .oferta-form-note{font-size:13px; color:var(--gray);}
+  .oferta-form-submit-btn[disabled]{opacity:0.6; cursor:default;}
+  .oferta-form-success{
+    display:flex; align-items:flex-start; gap:14px; padding:20px 22px; border-radius:14px;
+    background:rgba(59,165,92,0.08); border:1px solid rgba(59,165,92,0.3); animation:panelIn .45s var(--ease);
+  }
+  .oferta-form-success-icon{
+    width:26px; height:26px; border-radius:50%; background:#3ba55c; color:#fff; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800;
+    animation:successPop .5s var(--ease) .1s backwards;
+  }
+  @keyframes successPop{from{transform:scale(0); opacity:0;} to{transform:scale(1); opacity:1;}}
+  .oferta-form-success div:last-child{display:flex; flex-direction:column; gap:4px; font-size:14.5px; color:var(--ink-soft);}
+  .oferta-form-success b{color:var(--ink); font-size:15.5px;}
+  @media (max-width:560px){
+    .oferta-form .form-row{grid-template-columns:1fr;}
+  }
+
+  /* REZULTATY */
+  .rezultaty .wrap{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:center;}
+  .result-shot{
+    border-radius:26px; overflow:hidden; border:1px solid var(--border);
+    box-shadow:0 30px 60px -30px rgba(12,12,12,0.35);
+    max-width:300px; margin:0 auto;
+  }
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:34px 0;}
+  .stat-tile{background:var(--bg-soft); border:1px solid var(--border); border-radius:18px; padding:24px;}
+  .stat-tile .num{font-size:32px; font-weight:800; letter-spacing:-0.02em;}
+  .stat-tile .lbl{font-size:13px; color:var(--gray); margin-top:4px;}
+  .note{font-size:13px; color:var(--gray); border-left:2px solid var(--gray-light); padding-left:14px; margin-top:10px;}
+
+  /* KONTAKT */
+  .kontakt{background:var(--ink); color:#fff; position:relative; overflow:hidden;}
+  .kontakt::before{
+    content:""; position:absolute; top:-24%; right:-8%; width:620px; height:620px;
+    background:radial-gradient(circle, rgba(201,162,39,0.16), transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+  .kontakt::after{
+    content:""; position:absolute; bottom:-30%; left:-10%; width:520px; height:520px;
+    background:radial-gradient(circle, rgba(255,255,255,0.04), transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+  .kontakt .wrap{position:relative; z-index:1;}
+  .kontakt h2{color:#fff;}
+  .kontakt .eyebrow{color:rgba(255,255,255,0.5);}
+  .kontakt .eyebrow::before{background:rgba(255,255,255,0.25);}
+  .kontakt .lede{color:rgba(255,255,255,0.68);}
+  .kontakt-box{
+    display:flex; align-items:center; justify-content:flex-start; flex-wrap:wrap; gap:28px;
+    margin-top:44px; padding-top:44px; border-top:1px solid rgba(255,255,255,0.14);
+  }
+  .kontakt .btn{background:#fff; color:var(--ink); border-color:#fff;}
+  .mail{
+    font-size:16px; font-weight:700; position:relative; padding-bottom:3px;
+    background-image:linear-gradient(var(--gold), var(--gold));
+    background-repeat:no-repeat; background-position:0 100%; background-size:0% 2px;
+    transition:background-size .35s var(--ease);
+  }
+  .mail:hover{background-size:100% 2px; color:var(--gold-soft);}
+
+  footer{
+    padding:30px 0; font-size:12.5px; color:var(--gray); text-align:center;
+    display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;
+  }
+  .footer-mark{width:20px; height:20px; border-radius:50%; opacity:0.55;}
+
+  @media (max-width:900px){
+    .hero .wrap, .about .wrap, .rezultaty .wrap{grid-template-columns:1fr;}
+    .offer-grid{grid-template-columns:1fr;}
+    .navlinks{display:none;}
+    .hero h1{font-size:38px;}
+    section{padding:70px 0;}
+    .founder-heading{gap:18px;}
+    .founder-heading h2{font-size:46px;}
+    .founder-heading-avatar{width:92px; height:92px;}
+  }
+  @media (max-width:560px){
+    nav.wrap{flex-wrap:wrap; gap:12px; padding-top:14px; padding-bottom:14px;}
+    .brand{font-size:15px; white-space:nowrap;}
+    .brand img{width:28px; height:28px;}
+    .navright{gap:10px;}
+    .btn-sm{padding:9px 14px; font-size:12px;}
+    .founder-heading{gap:14px;}
+    .founder-heading h2{font-size:32px;}
+    .founder-heading-avatar{width:72px; height:72px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-tiktok" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M16.6 3h-3.1v12.2c0 1.4-1.1 2.5-2.5 2.5s-2.5-1.1-2.5-2.5 1.1-2.5 2.5-2.5c.3 0 .6.05.9.15V9.6c-.3-.04-.6-.06-.9-.06-3 0-5.5 2.4-5.5 5.5S8 20.5 11 20.5s5.5-2.4 5.5-5.5V9.1c1.1.8 2.4 1.3 3.9 1.3V7.3c-2.1 0-3.8-1.5-3.8-4.3z"/>
+    </symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.7" d="M22 12c0-2.4-.2-3.8-.4-4.5-.2-.7-.7-1.2-1.4-1.4C18.9 5.7 12 5.7 12 5.7s-6.9 0-8.2.4c-.7.2-1.2.7-1.4 1.4C2.2 8.2 2 9.6 2 12s.2 3.8.4 4.5c.2.7.7 1.2 1.4 1.4 1.3.4 8.2.4 8.2.4s6.9 0 8.2-.4c.7-.2 1.2-.7 1.4-1.4.2-.7.4-2.1.4-4.5Z"/>
+      <path fill="currentColor" d="M10.1 15.3 15.3 12l-5.2-3.3v6.6Z"/>
+    </symbol>
+    <symbol id="icon-smm" viewBox="0 0 24 24">
+      <rect x="2.5" y="2.5" width="6.2" height="6.2" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <rect x="15.3" y="2.5" width="6.2" height="6.2" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <rect x="2.5" y="15.3" width="6.2" height="6.2" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <rect x="15.3" y="15.3" width="6.2" height="6.2" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    </symbol>
+    <symbol id="icon-camera" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.7" d="M4 7.5h3l1.4-2h7.2l1.4 2h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1Z"/>
+      <circle cx="12" cy="13.2" r="3.6" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    </symbol>
+    <symbol id="icon-video" viewBox="0 0 24 24">
+      <rect x="2.5" y="6" width="14" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M16.5 10.5 21 8v8l-4.5-2.5Z"/>
+    </symbol>
+    <symbol id="icon-combo" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.7" d="M2.5 8.3h2.4l1.1-1.7h5.8l1.1 1.7h2.4a1 1 0 0 1 1 1V17a1 1 0 0 1-1 1H2.5a1 1 0 0 1-1-1V9.3a1 1 0 0 1 1-1Z"/>
+      <circle cx="8.4" cy="13" r="2.7" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path stroke="currentColor" stroke-width="1.7" stroke-linecap="round" d="M19.2 4.5v5M16.7 7h5"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><img src="assets/logo.png" alt="Oship Agency"> OSHIP AGENCY</div>
+    <div class="navright">
+      <div class="langtoggle" id="langToggle">
+        <span data-lang-btn="pl" class="active">PL</span><span data-lang-btn="en">EN</span>
+      </div>
+      <button class="burger" id="burgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-top">
+    <div class="brand"><img src="assets/logo.png" alt="Oship Agency"> OSHIP AGENCY</div>
+    <button class="drawer-close" id="drawerClose" aria-label="Zamknij">✕</button>
+  </div>
+  <nav class="drawer-links">
+    <a href="#onas" class="drawer-link" data-close>
+      <span class="idx">01</span>
+      <span data-i18n-lang="pl">O nas</span><span data-i18n-lang="en">About</span>
+    </a>
+    <a href="#founder" class="drawer-link" data-close>
+      <span class="idx">02</span>
+      <span data-i18n-lang="pl">Poznaj Foundera</span><span data-i18n-lang="en">Meet the Founder</span>
+    </a>
+    <a href="#oferta" class="drawer-link" data-close>
+      <span class="idx">03</span>
+      <span data-i18n-lang="pl">Oferta</span><span data-i18n-lang="en">Services</span>
+    </a>
+    <a href="#kontakt" class="drawer-link" data-close>
+      <span class="idx">04</span>
+      <span data-i18n-lang="pl">Kontakt</span><span data-i18n-lang="en">Contact</span>
+    </a>
+  </nav>
+  <div class="drawer-foot">
+    <span data-i18n-lang="pl">Napisz do nas</span><span data-i18n-lang="en">Email us</span>
+    <a href="mailto:oshipmediaagency@gmail.com">oshipmediaagency@gmail.com</a>
+  </div>
+</aside>
+
+<section class="hero">
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-orbs" aria-hidden="true">
+    <span class="hero-orb hero-orb-1"></span>
+    <span class="hero-orb hero-orb-2"></span>
+    <span class="hero-orb hero-orb-3"></span>
+  </div>
+  <div class="wrap hero-wrap-center">
+    <div class="hero-mark">
+      <div class="eyebrow center hero-badge reveal">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        <span data-i18n-lang="pl">Agencja mediów społecznościowych · Trójmiasto</span>
+        <span data-i18n-lang="en">Social media agency · Tri-City, Poland</span>
+      </div>
+      <div class="hero-mark-logo-wrap reveal">
+        <div class="hero-mark-logo-glow" aria-hidden="true"></div>
+        <div class="hero-mark-logo-ring"><img src="assets/logo.png" alt="Oship Agency" class="hero-mark-logo"></div>
+      </div>
+      <div class="hero-mark-name reveal">OSHIP AGENCY</div>
+      <div class="hero-mark-tagline reveal">Social Media Management <i>&middot;</i> Fotografia <i>&middot;</i> Videografia</div>
+      <div class="hero-mark-divider reveal"></div>
+      <div class="hero-mark-info reveal">
+        <div class="hero-info-item">
+          <span class="statlabel">CEO / Founder</span>
+          <div class="statrow">
+            <a class="statcircle" href="https://www.instagram.com/oshipagency/" target="_blank" rel="noopener" aria-label="Instagram @oshipagency"><img src="assets/personal/dawid-avatar.jpg" alt="Dawid Ostatek"></a>
+            <b>Dawid Ostatek</b>
+          </div>
+        </div>
+        <div class="hero-info-divider" aria-hidden="true"></div>
+        <div class="hero-info-item">
+          <span class="statlabel"><span data-i18n-lang="pl">Lokalizacja</span><span data-i18n-lang="en">Location</span></span>
+          <div class="statrow">
+            <span class="statcircle"><svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="3" height="1" y="0" fill="#fff"/><rect width="3" height="1" y="1" fill="#dc143c"/></svg></span>
+            <b><span data-i18n-lang="pl">Trójmiasto, Polska</span><span data-i18n-lang="en">Tri-City, Poland</span></b>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions reveal">
+        <a href="#oferta" class="btn">
+          <span data-i18n-lang="pl">Skontaktuj się z nami</span><span data-i18n-lang="en">Contact us</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" width="15" height="15"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#oferta" class="btn outline"><span data-i18n-lang="pl">Zobacz Wyniki</span><span data-i18n-lang="en">See Results</span></a>
+      </div>
+    </div>
+  </div>
+  <a href="#oferta" class="hero-scroll-cue reveal" aria-label="Przewiń niżej">
+    <span class="hero-scroll-cue-line"></span>
+    <span class="hero-scroll-cue-arrow"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </a>
+</section>
+
+<section class="about" id="onas">
+  <div class="wrap about-wrap-single">
+    <div class="about-copy about-copy-wide">
+      <div class="eyebrow reveal"><span data-i18n-lang="pl">O nas</span><span data-i18n-lang="en">About</span></div>
+      <div class="founder-heading reveal">
+        <img src="assets/logo.png" alt="Oship Agency" class="founder-heading-avatar">
+        <h2>Oship Agency</h2>
+      </div>
+      <p>
+        <span data-i18n-lang="pl">Jesteśmy agencją mediów społecznościowych z Trójmiasta. Zauważyliśmy, że większość social mediów prowadzona jest według tego samego, powtarzalnego schematu. Dla nas każda firma jest inna, dlatego dla każdego klienta tworzymy indywidualny plan działania, patrząc na to, co stanowi jego prawdziwy „efekt WOW", tak żeby pokazać najlepsze atrybuty każdej marki.</span>
+        <span data-i18n-lang="en">We're a social media agency from the Tri-City area. We've noticed that most agencies run social media using the same repeatable template. For us, every business is different, so we build an individual plan for each client based on what actually makes them stand out, their real "wow factor", to highlight each brand's strongest qualities.</span>
+      </p>
+      <p>
+        <span data-i18n-lang="pl">Wierzymy, że social media to nie tylko wizytówka, ale realne źródło nowych klientów. Oprócz prowadzenia social media oferujemy również profesjonalną fotografię i videografię, zarówno na eventy, jak i sesje personalne.</span>
+        <span data-i18n-lang="en">We believe social media isn't just a business card, it's a real source of new customers. Alongside social media management, we also offer professional photography and videography, for events as well as personal sessions.</span>
+      </p>
+      <p>
+        <span data-i18n-lang="pl">Pracujemy głównie z lokalnymi biznesami z Trójmiasta, ale realizujemy też zlecenia na terenie całej Polski.</span>
+        <span data-i18n-lang="en">We mostly work with local businesses in the Tri-City area, but we also take on projects across all of Poland.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="oferta" id="oferta">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span data-i18n-lang="pl">Co robimy</span><span data-i18n-lang="en">What we do</span></div>
+    <h2 class="reveal"><span data-i18n-lang="pl">Zobacz wyniki współpracy</span><span data-i18n-lang="en">See the results of our collaboration</span></h2>
+    <p class="lede reveal">
+      <span data-i18n-lang="pl">Jedna spójna komunikacja Twojej marki — kliknij, żeby zobaczyć, co dla kogo robiliśmy.</span>
+      <span data-i18n-lang="en">One consistent brand presence — click to see who we've done it for.</span>
+    </p>
+
+    <div class="service-switch reveal">
+      <button class="service-btn active" data-service="smm" type="button">
+        <span class="service-btn-icon"><svg><use href="#icon-smm"/></svg></span>
+        <span data-i18n-lang="pl">Social Media Management</span><span data-i18n-lang="en">Social Media Management</span>
+      </button>
+      <button class="service-btn" data-service="foto" type="button">
+        <span class="service-btn-icon"><svg><use href="#icon-camera"/></svg></span>
+        <span data-i18n-lang="pl">Fotografia</span><span data-i18n-lang="en">Photography</span>
+      </button>
+      <button class="service-btn" data-service="combo" type="button">
+        <span class="service-btn-icon"><svg><use href="#icon-combo"/></svg></span>
+        <span data-i18n-lang="pl">Sesja Foto+Rolki</span><span data-i18n-lang="en">Photo+Reels Session</span>
+      </button>
+    </div>
+
+    <div class="service-panel active" data-panel="smm">
+      <p class="desc-serif">
+        <span data-i18n-lang="pl">Strategia, planowanie treści oraz prowadzenie profili i społeczności to pełna opieka nad Twoimi social mediami, rozliczana z realnych wyników. Dla każdego klienta tworzymy osobny plan, ponieważ nie działamy według jednego stałego scenariusza, tylko dostosowujemy treść do tego, co faktycznie daje wyniki. Co miesiąc dostajesz analizę statystyk pokazującą, jak wygląda nasza współpraca.</span>
+        <span data-i18n-lang="en">Strategy, content planning and profile and community management mean full care for your social channels, measured by real results. Every client gets their own plan, because we don't run one fixed script; we adapt the content to what actually works. Every month you get a stats analysis showing how the collaboration is going.</span>
+      </p>
+      <div class="smm-highlight">
+        <div class="smm-highlight-big">
+          <p class="smm-highlight-num">
+            <span data-i18n-lang="pl">Wygenerowaliśmy <span class="gold">3 miliony+ wyświetleń</span>, a także <span class="gold">5000+ obserwacji</span> dla klientów.</span>
+            <span data-i18n-lang="en">We've generated <span class="gold">3 million+ views</span> and also <span class="gold">5000+ followers</span> for our clients.</span>
+          </p>
+        </div>
+        <p class="smm-highlight-note">
+          <span data-i18n-lang="pl">Kliknij w zakładkę jednego z naszych klientów poniżej, żeby zobaczyć konkretne wyniki, jakie dla niego zrobiliśmy.</span>
+          <span data-i18n-lang="en">Click one of our clients below to see the specific results we got for them.</span>
+        </p>
+      </div>
+      <div class="client-chips-label"><span data-i18n-lang="pl">Kilka przykładów naszych klientów</span><span data-i18n-lang="en">A few examples of our clients</span></div>
+      <div class="client-chips">
+        <button type="button" class="client-chip" data-ig-client="zafishowani" data-ig-name="Zafishowani" data-ig-url="https://www.instagram.com/zafishowani/" data-ig-followers="2470" data-ig-updated="2026-08-28" data-ig-total-views="73424" data-ig-since="2026-03">Zafishowani</button>
+        <button type="button" class="client-chip" data-ig-client="holy_burger_gdansk" data-ig-name="Holy Burger Gdańsk" data-ig-url="https://www.instagram.com/holy_burger_gdansk/" data-ig-followers="946" data-ig-updated="2026-08-28" data-ig-total-views="249974" data-ig-since="2025-09">Holy Burger Gdańsk</button>
+        <button type="button" class="client-chip" data-ig-client="game_over_gdansk" data-ig-name="Game Over" data-ig-url="https://www.instagram.com/game.over_gdansk/" data-ig-followers="2263" data-ig-updated="2026-08-28" data-ig-total-views="2101736" data-ig-since="2025-09">Game Over</button>
+        <button type="button" class="client-chip" data-ig-client="blessedink_tatts" data-ig-name="Blessed Ink" data-ig-url="https://www.instagram.com/blessedink.tatts/" data-ig-followers="369" data-ig-updated="2026-08-22" data-ig-total-views="34678" data-ig-since="2025-07">Blessed Ink</button>
+      </div>
+    </div>
+
+    <div class="service-panel" data-panel="foto">
+      <p class="desc-serif">
+        <span data-i18n-lang="pl">Eventy, sesje produktowe oraz dania to zdjęcia w stylu, jaki wybierzesz Ty. Dla każdego klienta pracujemy inaczej, ponieważ nie trzymamy się jednej stałej estetyki, tylko dopasowujemy kadr, światło i klimat do Twoich potrzeb. Efekt to zdjęcia, które faktycznie oddają charakter Twojej marki.</span>
+        <span data-i18n-lang="en">Events, product shoots and food mean photos in whatever style you choose. We work differently for every client, because we don't stick to one fixed aesthetic; we adapt the framing, light and mood to your needs. The result is photos that actually capture your brand's character.</span>
+      </p>
+      <p class="smm-highlight-note">
+        <span data-i18n-lang="pl">Kliknij w zakładkę jednego z naszych klientów poniżej, żeby zobaczyć, dla kogo i w jakim stylu robiliśmy zdjęcia.</span>
+        <span data-i18n-lang="en">Click one of our clients below to see who we've shot for and in what style.</span>
+      </p>
+      <div class="client-chips-label"><span data-i18n-lang="pl">Kilka przykładów naszych klientów</span><span data-i18n-lang="en">A few examples of our clients</span></div>
+      <div class="client-chips">
+        <button type="button" class="client-chip" data-ig-client="podolewielkie" data-ig-name="Podole Wielkie Gorzelnia" data-ig-url="https://www.instagram.com/podolewielkie/" data-ig-followers="2657" data-ig-updated="2026-08-19" data-gallery="podolewielkie">Podole Wielkie Gorzelnia</button>
+        <button type="button" class="client-chip" data-ig-client="popierogu_koszwaly" data-ig-name="PoPierogu Koszwały" data-ig-url="https://www.instagram.com/popierogu.koszwaly/" data-ig-followers="592" data-ig-updated="2026-08-21" data-gallery="koszwaly">PoPierogu Koszwały</button>
+        <button type="button" class="client-chip" data-ig-client="komunia_swieta" data-ig-name="Komunia Święta" data-gallery="komunia">Komunia Święta</button>
+      </div>
+    </div>
+
+    <div class="service-panel" data-panel="combo">
+      <p class="desc-serif">
+        <span data-i18n-lang="pl">Restauracje, wydarzenia oraz jednorazowe okazje to jedna wizyta, podczas której robimy zarówno zdjęcia, jak i gotowe do publikacji rolki. Dla każdego klienta dopasowujemy proporcje i styl contentu, ponieważ nie sprzedajemy jednego sztywnego pakietu, tylko dobieramy to, co najlepiej odda charakter Twojego miejsca czy wydarzenia. Efekt to kompletny content z jednego dnia, gotowy do publikacji, bez zobowiązania na dłuższą współpracę.</span>
+        <span data-i18n-lang="en">Restaurants, events and one-off occasions mean a single visit where we shoot both photos and ready-to-post reels. We tailor the mix and style of content for every client, because we don't sell one rigid package; we choose what best captures the character of your place or event. The result is complete, ready-to-post content from a single day, with no long-term commitment.</span>
+      </p>
+      <p class="smm-highlight-note">
+        <span data-i18n-lang="pl">Kliknij w zakładkę klienta poniżej, żeby zobaczyć zdjęcia i wyniki rolki, którą dla niego zrobiliśmy.</span>
+        <span data-i18n-lang="en">Click the client below to see the photos and the results of the reel we made for them.</span>
+      </p>
+      <div class="client-chips-label"><span data-i18n-lang="pl">Kilka przykładów naszych klientów</span><span data-i18n-lang="en">A few examples of our clients</span></div>
+      <div class="client-chips">
+        <button type="button" class="client-chip" data-ig-client="popierogu_koszwaly" data-ig-name="PoPierogu Koszwały" data-ig-url="https://www.instagram.com/popierogu.koszwaly/" data-ig-followers="592" data-ig-updated="2026-08-21" data-gallery="koszwaly_combo" data-ig-total-views="12300">PoPierogu Koszwały</button>
+      </div>
+    </div>
+
+    <div class="client-detail" id="clientDetail">
+      <button type="button" class="client-detail-close" id="clientDetailClose" aria-label="Zamknij">&times;</button>
+      <div class="client-detail-head">
+        <img class="client-detail-logo" id="clientDetailLogo" src="" alt="">
+        <div>
+          <div class="client-detail-name" id="clientDetailName"></div>
+          <div class="client-detail-followers" id="clientDetailFollowers"></div>
+          <div class="client-detail-since" id="clientDetailSince"></div>
+        </div>
+      </div>
+      <div class="client-detail-stats-label" id="clientDetailStatsLabel"><span data-i18n-lang="pl">Efekty naszej współpracy</span><span data-i18n-lang="en">Results of our work together</span></div>
+      <div class="client-detail-stats" id="clientDetailStats">
+        <span class="client-detail-stat" id="clientDetailViews"></span>
+      </div>
+      <div class="client-detail-gallery" id="clientDetailGallery"></div>
+      <div class="client-detail-updated" id="clientDetailUpdated"></div>
+      <a class="client-detail-link" id="clientDetailLink" href="#" target="_blank" rel="noopener">
+        <span data-i18n-lang="pl">Zobacz profil</span><span data-i18n-lang="en">View profile</span> →
+      </a>
+    </div>
+
+    <div class="oferta-contact reveal">
+      <h3><span data-i18n-lang="pl">Chcesz zacząć współpracę?</span><span data-i18n-lang="en">Ready to get started?</span></h3>
+      <p><span data-i18n-lang="pl">Napisz kilka słów o sobie i swojej marce — odezwiemy się z konkretną propozycją.</span><span data-i18n-lang="en">Tell us a bit about your brand — we'll get back with a concrete proposal.</span></p>
+      <form id="ofertaContactForm" class="oferta-form" novalidate>
+        <div class="form-row">
+          <input type="text" name="name" required data-ph-pl="Imię i nazwisko" data-ph-en="Full name">
+          <input type="text" name="company" data-ph-pl="Nazwa firmy" data-ph-en="Company name">
+        </div>
+        <div class="form-row">
+          <input type="email" name="email" required data-ph-pl="E-mail kontaktowy" data-ph-en="Contact email">
+          <select name="service" data-ph-pl="Wybierz usługę" data-ph-en="Service you're interested in">
+            <option value="" data-opt-pl="Wybierz usługę" data-opt-en="Service you're interested in"></option>
+            <option value="Social Media Management" data-opt-pl="Social Media Management" data-opt-en="Social Media Management">Social Media Management</option>
+            <option value="Fotografia" data-opt-pl="Fotografia" data-opt-en="Photography">Fotografia</option>
+            <option value="Videografia" data-opt-pl="Videografia" data-opt-en="Videography">Videografia</option>
+            <option value="Sesja Foto+Rolki" data-opt-pl="Sesja Foto+Rolki" data-opt-en="Photo+Reels Session">Sesja Foto+Rolki</option>
+            <option value="Inne" data-opt-pl="Inne" data-opt-en="Other">Inne</option>
+          </select>
+        </div>
+        <textarea name="message" rows="3" data-ph-pl="Kilka słów o projekcie..." data-ph-en="A few words about your project..."></textarea>
+        <div class="oferta-form-foot">
+          <button type="submit" class="btn" id="ofertaFormSubmit">
+            <span data-i18n-lang="pl">Wyślij zapytanie</span><span data-i18n-lang="en">Send inquiry</span> →
+          </button>
+          <span class="oferta-form-note"><span data-i18n-lang="pl">Odpisujemy w 48h.</span><span data-i18n-lang="en">We reply within 48h.</span></span>
+        </div>
+      </form>
+      <div class="oferta-form-success" id="ofertaFormSuccess" style="display:none">
+        <div class="oferta-form-success-icon">✓</div>
+        <div>
+          <b><span data-i18n-lang="pl">Dziękujemy! Zapytanie zostało wysłane.</span><span data-i18n-lang="en">Thank you! Your inquiry has been sent.</span></b>
+          <span data-i18n-lang="pl">Odezwiemy się najpóźniej w ciągu 48h.</span>
+          <span data-i18n-lang="en">We'll get back to you within 48h.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<span id="cennik" class="anchor-placeholder"></span>
+
+<section class="about founder" id="founder">
+  <div class="wrap about-wrap-single">
+    <div class="about-copy about-copy-wide">
+      <div class="eyebrow reveal"><span data-i18n-lang="pl">Poznaj Foundera</span><span data-i18n-lang="en">Meet the Founder</span></div>
+      <div class="founder-heading reveal">
+        <img src="assets/personal/dawid-avatar.jpg" alt="Dawid Ostatek" class="founder-heading-avatar">
+        <h2>Dawid Ostatek</h2>
+      </div>
+      <p>
+        <span data-i18n-lang="pl">Jestem założycielem Oship Agency. Specjalizuję się w Social Media Managemencie i zajmuję się tym od 2 lat. Na co dzień prowadzę social media dla różnych firm, a przy okazji fotografuję eventy, dania i wiele innych eventów.</span>
+        <span data-i18n-lang="en">I'm the founder of Oship Agency. I specialize in Social Media Management, and I've been doing it for 2 years. Day to day I run social media for different businesses, and I also shoot photos at events, food shoots and many other events.</span>
+      </p>
+      <p>
+        <span data-i18n-lang="pl">Agencję stworzyłem z pasji. Kocham nagrywać, fotografować i ogarniać wszystko, co dzieje się za kulisami. Zależy mi, żeby efekty podobały się nie tylko klientom, ale też ich odbiorcom, widzom w social mediach oraz gościom.</span>
+        <span data-i18n-lang="en">I started the agency out of passion. I love filming, photographing and handling everything that happens behind the scenes. What matters to me is that the results resonate not just with clients, but with their audience too, their followers online as well as the guests.</span>
+      </p>
+      <div class="founder-line-row reveal">
+        <div class="founder-line">
+          <img src="assets/personal/dawid-avatar.jpg" alt="Dawid Ostatek">
+          <div>
+            <b>Dawid Ostatek</b>
+            <span data-i18n-lang="pl">Założyciel &amp; CEO</span>
+            <span data-i18n-lang="en">Founder &amp; CEO</span>
+          </div>
+        </div>
+        <div class="founder-social">
+          <div class="founder-social-label">
+            <span data-i18n-lang="pl">Znajdziesz mnie tutaj</span>
+            <span data-i18n-lang="en">Find me here</span>
+          </div>
+          <div class="founder-social-row">
+            <a class="founder-social-item" href="https://www.instagram.com/dawidostatek_/" target="_blank" rel="noopener" aria-label="Instagram">
+              <div class="founder-social-ring"><div class="founder-social-ring-inner"><svg><use href="#icon-instagram"/></svg></div></div>
+            </a>
+            <a class="founder-social-item" href="https://www.tiktok.com/@dawidostatek_" target="_blank" rel="noopener" aria-label="TikTok">
+              <div class="founder-social-ring"><div class="founder-social-ring-inner"><svg><use href="#icon-tiktok"/></svg></div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kontakt" id="kontakt">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span data-i18n-lang="pl">Kontakt</span><span data-i18n-lang="en">Contact</span></div>
+    <h2><span data-i18n-lang="pl">Porozmawiajmy o Twojej marce</span><span data-i18n-lang="en">Let's talk about your brand</span></h2>
+    <p class="lede">
+      <span data-i18n-lang="pl">Napisz, co potrzebujesz, odpowiadamy zwykle w ciągu 48h.</span>
+      <span data-i18n-lang="en">Tell us what you need, we usually reply within 48h.</span>
+    </p>
+    <div class="kontakt-box reveal">
+      <a class="mail" href="mailto:oshipmediaagency@gmail.com">oshipmediaagency@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="assets/logo.png" alt="" class="footer-mark" aria-hidden="true">
+  <span>© 2026 Oship Agency · Trójmiasto, Polska · <span data-i18n-lang="pl">wersja robocza · podgląd</span><span data-i18n-lang="en">draft · preview</span></span>
+</footer>
+
+<div class="photo-gallery-overlay" id="photoGalleryOverlay">
+  <div class="photo-gallery-topbar">
+    <div class="photo-gallery-title" id="photoGalleryTitle"></div>
+    <button type="button" class="photo-gallery-close" id="photoGalleryClose" aria-label="Zamknij">&times;</button>
+  </div>
+  <div class="coverflow-stage" id="coverflowStage">
+    <button type="button" class="coverflow-arrow prev" id="coverflowPrev" aria-label="Poprzednie">&#8249;</button>
+    <div class="coverflow-track" id="coverflowTrack"></div>
+    <button type="button" class="coverflow-arrow next" id="coverflowNext" aria-label="Następne">&#8250;</button>
+  </div>
+  <div class="photo-gallery-counter" id="photoGalleryCounter"></div>
+  <div class="photo-gallery-hint">
+    <span data-i18n-lang="pl">Przeciągnij lub użyj strzałek, kliknij środkowe zdjęcie, żeby powiększyć</span>
+    <span data-i18n-lang="en">Drag or use the arrows, click the center photo to enlarge</span>
+  </div>
+</div>
+
+<button type="button" class="back-to-top" id="backToTop" aria-label="Przewiń do góry">
+  <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+  window.GALLERY_DATA = {"komunia": ["assets/komunia/komunia-01.jpg", "assets/komunia/komunia-02.jpg", "assets/komunia/komunia-03.jpg", "assets/komunia/komunia-04.jpg", "assets/komunia/komunia-05.jpg", "assets/komunia/komunia-06.jpg", "assets/komunia/komunia-07.jpg", "assets/komunia/komunia-08.jpg", "assets/komunia/komunia-09.jpg", "assets/komunia/komunia-10.jpg", "assets/komunia/komunia-11.jpg", "assets/komunia/komunia-12.jpg", "assets/komunia/komunia-13.jpg", "assets/komunia/komunia-14.jpg", "assets/komunia/komunia-15.jpg", "assets/komunia/komunia-16.jpg", "assets/komunia/komunia-17.jpg", "assets/komunia/komunia-18.jpg", "assets/komunia/komunia-19.jpg"], "koszwaly": ["assets/koszwaly/koszwaly-01.jpg", "assets/koszwaly/koszwaly-02.jpg", "assets/koszwaly/koszwaly-03.jpg", "assets/koszwaly/koszwaly-04.jpg", "assets/koszwaly/koszwaly-05.jpg", "assets/koszwaly/koszwaly-06.jpg", "assets/koszwaly/koszwaly-07.jpg", "assets/koszwaly/koszwaly-08.jpg", "assets/koszwaly/koszwaly-09.jpg", "assets/koszwaly/koszwaly-10.jpg"], "koszwaly_combo": ["assets/koszwaly_combo/koszwaly-01.jpg", "assets/koszwaly_combo/koszwaly-02.jpg", "assets/koszwaly_combo/koszwaly-03.jpg", "assets/koszwaly_combo/koszwaly-04.jpg", "assets/koszwaly_combo/koszwaly-05.jpg"], "podolewielkie": ["assets/podolewielkie/podole-01.jpg", "assets/podolewielkie/podole-02.jpg", "assets/podolewielkie/podole-03.jpg", "assets/podolewielkie/podole-04.jpg", "assets/podolewielkie/podole-05.jpg", "assets/podolewielkie/podole-06.jpg", "assets/podolewielkie/podole-07.jpg", "assets/podolewielkie/podole-08.jpg", "assets/podolewielkie/podole-09.jpg", "assets/podolewielkie/podole-10.jpg", "assets/podolewielkie/podole-11.jpg", "assets/podolewielkie/podole-12.jpg"]};
+  window.CLIENT_LOGOS = {"blessedink_tatts": "assets/client-logos/final/blessed_ink.jpg", "game_over_gdansk": "assets/client-logos/final/game_over.jpg", "holy_burger_gdansk": "assets/client-logos/final/holy_burger.jpg", "podolewielkie": "assets/client-logos/final/podolewielkie.jpg", "popierogu_koszwaly": "assets/client-logos/final/koszwaly.jpg", "zafishowani": "assets/client-logos/final/zafishowani.jpg"};
+</script>
+<script>
+  // Language toggle
+  const langBtns = document.querySelectorAll('[data-lang-btn]');
+  function applyLang(lang){
+    document.documentElement.setAttribute('data-lang', lang);
+    langBtns.forEach(b=>b.classList.toggle('active', b.getAttribute('data-lang-btn')===lang));
+    document.querySelectorAll('[data-i18n-lang]').forEach(el=>{
+      el.style.display = (el.getAttribute('data-i18n-lang')===lang) ? '' : 'none';
+    });
+  }
+  langBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      applyLang(btn.getAttribute('data-lang-btn'));
+      if(window.__refreshClientDetail) window.__refreshClientDetail();
+      if(window.__refreshFormLang) window.__refreshFormLang();
+    });
+  });
+  applyLang('pl');
+
+  // Magnetic hover tilt — subtle 3D tilt following the cursor on key buttons
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(window.matchMedia('(hover: none)').matches) return;
+    const els = document.querySelectorAll('.hero-actions .btn, .service-btn');
+    els.forEach(el=>{
+      el.addEventListener('mousemove', (e)=>{
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = `perspective(600px) rotateX(${(-y*8).toFixed(2)}deg) rotateY(${(x*8).toFixed(2)}deg) translateY(-3px)`;
+      });
+      el.addEventListener('mouseleave', ()=>{ el.style.transform = ''; });
+    });
+  })();
+
+  // Hero cursor spotlight — soft gold glow following the pointer
+  (function(){
+    const hero = document.querySelector('.hero');
+    if(!hero) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(window.matchMedia('(hover: none)').matches) return;
+    const spot = document.createElement('div');
+    spot.className = 'hero-spotlight';
+    hero.appendChild(spot);
+    hero.addEventListener('mousemove', (e)=>{
+      const r = hero.getBoundingClientRect();
+      spot.style.left = (e.clientX - r.left) + 'px';
+      spot.style.top = (e.clientY - r.top) + 'px';
+      spot.style.opacity = '1';
+    });
+    hero.addEventListener('mouseleave', ()=>{ spot.style.opacity = '0'; });
+  })();
+
+  // Scroll reveal — content fades/slides in as it enters view, background stays static
+  (function(){
+    const items = document.querySelectorAll('.reveal');
+    // simple stagger: index within same parent container
+    const seen = new Map();
+    items.forEach(el=>{
+      const parent = el.parentElement;
+      const i = seen.get(parent) || 0;
+      seen.set(parent, i+1);
+      el.style.transitionDelay = Math.min(i*70, 350) + 'ms';
+    });
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    items.forEach(el=> io.observe(el));
+  })();
+
+  // Scroll progress bar + header shadow + back-to-top button
+  (function(){
+    const bar = document.getElementById('scrollProgress');
+    const header = document.querySelector('header');
+    const backToTop = document.getElementById('backToTop');
+    let ticking = false;
+    function update(){
+      const h = document.documentElement;
+      const scrollTop = h.scrollTop || document.body.scrollTop;
+      const height = h.scrollHeight - h.clientHeight;
+      const pct = height > 0 ? (scrollTop / height) * 100 : 0;
+      if(bar) bar.style.width = pct + '%';
+      if(header) header.classList.toggle('scrolled', scrollTop > 10);
+      if(backToTop) backToTop.classList.toggle('show', scrollTop > 600);
+      ticking = false;
+    }
+    window.addEventListener('scroll', ()=>{
+      if(!ticking){ requestAnimationFrame(update); ticking = true; }
+    }, {passive:true});
+    window.addEventListener('resize', update);
+    if(backToTop){
+      backToTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+    }
+    update();
+  })();
+
+  // Drawer menu (side panel triggered by burger icon)
+  (function(){
+    const burger = document.getElementById('burgerBtn');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('drawerOverlay');
+    const closeBtn = document.getElementById('drawerClose');
+
+    function openDrawer(){ document.body.classList.add('drawer-open'); }
+    function closeDrawer(){ document.body.classList.remove('drawer-open'); }
+
+    burger.addEventListener('click', ()=>{
+      document.body.classList.contains('drawer-open') ? closeDrawer() : openDrawer();
+    });
+    overlay.addEventListener('click', closeDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
+    drawer.querySelectorAll('[data-close]').forEach(link=>{
+      link.addEventListener('click', closeDrawer);
+    });
+  })();
+
+  // Service switcher (Oferta section)
+  (function(){
+    const btns = document.querySelectorAll('.service-btn');
+    const panels = document.querySelectorAll('.service-panel');
+    btns.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const target = btn.getAttribute('data-service');
+        btns.forEach(b=> b.classList.toggle('active', b===btn));
+        panels.forEach(p=> p.classList.toggle('active', p.getAttribute('data-panel')===target));
+        if(window.__hideClientDetail) window.__hideClientDetail();
+      });
+    });
+  })();
+
+  // Client chip detail card — followers count + link to profile
+  (function(){
+    const chips = document.querySelectorAll('.client-chip');
+    const detail = document.getElementById('clientDetail');
+    if(!chips.length || !detail) return;
+    const nameEl = document.getElementById('clientDetailName');
+    const logoEl = document.getElementById('clientDetailLogo');
+    const followersEl = document.getElementById('clientDetailFollowers');
+    const sinceEl = document.getElementById('clientDetailSince');
+    const statsLabelEl = document.getElementById('clientDetailStatsLabel');
+    const statsEl = document.getElementById('clientDetailStats');
+    const viewsEl = document.getElementById('clientDetailViews');
+    const updatedEl = document.getElementById('clientDetailUpdated');
+    const linkEl = document.getElementById('clientDetailLink');
+    const closeBtn = document.getElementById('clientDetailClose');
+    const galleryRowEl = document.getElementById('clientDetailGallery');
+    let activeChip = null;
+
+    function currentLang(){ return document.documentElement.getAttribute('data-lang') || 'pl'; }
+    function formatFollowers(n){
+      const lang = currentLang();
+      const locale = lang === 'en' ? 'en-US' : 'pl-PL';
+      const num = new Intl.NumberFormat(locale).format(n);
+      return lang === 'en' ? (num + ' followers') : (num + ' obserwujących');
+    }
+    function formatCount(n){
+      const lang = currentLang();
+      const locale = lang === 'en' ? 'en-US' : 'pl-PL';
+      return new Intl.NumberFormat(locale).format(n);
+    }
+    function formatUpdated(iso){
+      const lang = currentLang();
+      const locale = lang === 'en' ? 'en-US' : 'pl-PL';
+      const d = new Date(iso + 'T00:00:00');
+      const label = lang === 'en' ? 'Data as of: ' : 'Dane z: ';
+      return label + d.toLocaleDateString(locale, {day:'numeric', month:'long', year:'numeric'});
+    }
+    function formatSince(monthIso){
+      const lang = currentLang();
+      const d = new Date(monthIso + '-01T00:00:00');
+      const year = d.getFullYear();
+      if(lang === 'en'){
+        const monthName = d.toLocaleDateString('en-US', {month:'long'});
+        return 'Working together since ' + monthName + ' ' + year;
+      }
+      const monthsGenitive = ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
+      return 'Współpracujemy od ' + monthsGenitive[d.getMonth()] + ' ' + year;
+    }
+    function showDetail(chip){
+      nameEl.textContent = chip.getAttribute('data-ig-name');
+      const logoKey = chip.getAttribute('data-ig-client');
+      const logoSrc = (logoKey && window.CLIENT_LOGOS && window.CLIENT_LOGOS[logoKey]) || null;
+      if(logoSrc){
+        logoEl.src = logoSrc;
+        logoEl.alt = chip.getAttribute('data-ig-name') || '';
+        logoEl.classList.add('show');
+      } else {
+        logoEl.src = '';
+        logoEl.classList.remove('show');
+      }
+      const followers = chip.getAttribute('data-ig-followers');
+      if(followers){
+        followersEl.textContent = formatFollowers(followers);
+        followersEl.style.display = '';
+      } else {
+        followersEl.style.display = 'none';
+      }
+      const since = chip.getAttribute('data-ig-since');
+      if(since){
+        sinceEl.textContent = formatSince(since);
+        sinceEl.style.display = '';
+      } else {
+        sinceEl.style.display = 'none';
+      }
+      const lang = currentLang();
+      const views = chip.getAttribute('data-ig-total-views');
+      let hasStats = false;
+      if(views && Number(views) > 0){
+        viewsEl.innerHTML = (lang === 'en' ? 'Views: ' : 'Wyświetlenia: ') + '<b>' + formatCount(views) + '</b>';
+        viewsEl.style.display = '';
+        hasStats = true;
+      } else {
+        viewsEl.style.display = 'none';
+      }
+      statsEl.classList.toggle('show', hasStats);
+      statsLabelEl.classList.toggle('show', hasStats);
+      const updated = chip.getAttribute('data-ig-updated');
+      if(updated){
+        updatedEl.textContent = formatUpdated(updated);
+        updatedEl.style.display = '';
+      } else {
+        updatedEl.style.display = 'none';
+      }
+      const profileUrl = chip.getAttribute('data-ig-url');
+      if(profileUrl){
+        linkEl.href = profileUrl;
+        linkEl.style.display = '';
+      } else {
+        linkEl.style.display = 'none';
+      }
+
+      const galleryKey = chip.getAttribute('data-gallery');
+      const photos = (galleryKey && window.GALLERY_DATA && window.GALLERY_DATA[galleryKey]) || null;
+      galleryRowEl.innerHTML = '';
+      if(photos && photos.length){
+        const maxThumbs = 4;
+        photos.slice(0, maxThumbs).forEach((src, i)=>{
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'client-detail-gallery-thumb';
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = '';
+          btn.appendChild(img);
+          btn.addEventListener('click', ()=>{ if(window.__openPhotoGallery) window.__openPhotoGallery(galleryKey, chip.getAttribute('data-ig-name'), i); });
+          galleryRowEl.appendChild(btn);
+        });
+        if(photos.length > maxThumbs){
+          const more = document.createElement('button');
+          more.type = 'button';
+          more.className = 'client-detail-gallery-more';
+          more.textContent = '+' + (photos.length - maxThumbs);
+          more.addEventListener('click', ()=>{ if(window.__openPhotoGallery) window.__openPhotoGallery(galleryKey, chip.getAttribute('data-ig-name'), maxThumbs); });
+          galleryRowEl.appendChild(more);
+        }
+        galleryRowEl.classList.add('show');
+      } else {
+        galleryRowEl.classList.remove('show');
+      }
+
+      detail.classList.add('show');
+    }
+    function hideDetail(){
+      detail.classList.remove('show');
+      if(activeChip){ activeChip.classList.remove('active'); activeChip = null; }
+    }
+    chips.forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        if(activeChip === chip){ hideDetail(); return; }
+        chips.forEach(c=> c.classList.remove('active'));
+        chip.classList.add('active');
+        activeChip = chip;
+        showDetail(chip);
+      });
+    });
+    closeBtn.addEventListener('click', hideDetail);
+    window.__hideClientDetail = hideDetail;
+    window.__refreshClientDetail = function(){ if(activeChip) showDetail(activeChip); };
+  })();
+
+  // Galeria zdjęć klienta — coverflow overlay
+  (function(){
+    const overlay = document.getElementById('photoGalleryOverlay');
+    if(!overlay) return;
+    const titleEl = document.getElementById('photoGalleryTitle');
+    const trackEl = document.getElementById('coverflowTrack');
+    const counterEl = document.getElementById('photoGalleryCounter');
+    const closeBtn = document.getElementById('photoGalleryClose');
+    const prevBtn = document.getElementById('coverflowPrev');
+    const nextBtn = document.getElementById('coverflowNext');
+
+    let photos = [];
+    let current = 0;
+    let focusMode = false;
+    let items = [];
+
+    function currentLang(){ return document.documentElement.getAttribute('data-lang') || 'pl'; }
+
+    function build(photoList){
+      trackEl.innerHTML = '';
+      items = photoList.map((src)=>{
+        const el = document.createElement('div');
+        el.className = 'coverflow-item';
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        el.appendChild(img);
+        trackEl.appendChild(el);
+        return el;
+      });
+      items.forEach((el, i)=>{
+        el.addEventListener('click', ()=>{
+          if(i === current){
+            focusMode = !focusMode;
+            render();
+          } else {
+            current = i;
+            render();
+          }
+        });
+      });
+    }
+
+    function render(){
+      const stageEl = document.getElementById('coverflowStage');
+      const stageW = stageEl ? stageEl.clientWidth : 900;
+      const small = stageW < 640;
+      const baseW = focusMode ? (small ? stageW * 0.86 : 520) : (small ? 150 : 230);
+      const baseH = baseW * 1.32;
+      const spacing = focusMode ? baseW * 0.5 : baseW * 0.66;
+      items.forEach((el, i)=>{
+        const offset = i - current;
+        const abs = Math.abs(offset);
+        el.style.width = baseW + 'px';
+        el.style.height = baseH + 'px';
+        if(abs > (focusMode ? 1 : 4)){
+          el.style.opacity = '0';
+          el.style.pointerEvents = 'none';
+          el.style.transform = `translate(-50%,-50%) translateX(${offset * spacing}px) scale(0.5)`;
+          el.classList.remove('active');
+          return;
+        }
+        el.style.pointerEvents = 'auto';
+        const rotateY = offset === 0 ? 0 : (offset > 0 ? -30 : 30);
+        const scale = offset === 0 ? 1 : Math.max(0.55, 0.82 - (abs - 1) * 0.12);
+        el.style.transform = `translate(-50%,-50%) translateX(${offset * spacing}px) rotateY(${rotateY}deg) scale(${scale})`;
+        el.style.zIndex = String(50 - abs);
+        el.style.opacity = offset === 0 ? '1' : String(Math.max(0.4, 1 - abs * 0.25));
+        el.style.cursor = offset === 0 ? (focusMode ? 'zoom-out' : 'zoom-in') : 'pointer';
+        el.classList.toggle('active', offset === 0);
+      });
+      const lang = currentLang();
+      counterEl.textContent = (current + 1) + ' / ' + items.length;
+    }
+
+    function open(key, name, startIndex){
+      photos = (window.GALLERY_DATA && window.GALLERY_DATA[key]) || [];
+      if(!photos.length) return;
+      titleEl.textContent = name || '';
+      current = Math.min(Math.max(startIndex || 0, 0), photos.length - 1);
+      focusMode = false;
+      build(photos);
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(render);
+    }
+    function close(){
+      overlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    function next(){ if(current < items.length - 1){ current++; render(); } else { current = 0; render(); } }
+    function prev(){ if(current > 0){ current--; render(); } else { current = items.length - 1; render(); } }
+
+    closeBtn.addEventListener('click', close);
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+    overlay.addEventListener('click', (e)=>{ if(e.target === overlay) close(); });
+    window.addEventListener('keydown', (e)=>{
+      if(!overlay.classList.contains('show')) return;
+      if(e.key === 'Escape') close();
+      else if(e.key === 'ArrowRight') next();
+      else if(e.key === 'ArrowLeft') prev();
+    });
+    window.addEventListener('resize', ()=>{ if(overlay.classList.contains('show')) render(); });
+
+    // Przeciąganie / swipe
+    const stage = document.getElementById('coverflowStage');
+    let dragStartX = null;
+    stage.addEventListener('pointerdown', (e)=>{ dragStartX = e.clientX; });
+    stage.addEventListener('pointerup', (e)=>{
+      if(dragStartX === null) return;
+      const delta = e.clientX - dragStartX;
+      dragStartX = null;
+      if(Math.abs(delta) < 40) return;
+      if(delta < 0) next(); else prev();
+    });
+    stage.addEventListener('pointercancel', ()=>{ dragStartX = null; });
+
+    window.__openPhotoGallery = open;
+  })();
+
+  // Oferta contact form — sends to the Google Apps Script backend (Sheet + email
+  // notification + admin panel). Falls back to a pre-filled mailto if the backend
+  // isn't configured yet or the request fails, so the form never breaks.
+  (function(){
+    const form = document.getElementById('ofertaContactForm');
+    if(!form) return;
+
+    // Formularz wysyła zgłoszenia przez Web3Forms (bez własnego backendu/serwera).
+    const WEB3FORMS_ACCESS_KEY = 'e067ea16-0816-48df-ad70-6d702b146bb1';
+
+    const submitBtn = document.getElementById('ofertaFormSubmit');
+    const successEl = document.getElementById('ofertaFormSuccess');
+
+    function currentLang(){ return document.documentElement.getAttribute('data-lang') || 'pl'; }
+
+    function refreshFormLang(){
+      const lang = currentLang();
+      form.querySelectorAll('[data-ph-pl]').forEach(el=>{
+        el.setAttribute('placeholder', lang==='en' ? el.getAttribute('data-ph-en') : el.getAttribute('data-ph-pl'));
+      });
+      form.querySelectorAll('option[data-opt-pl]').forEach(opt=>{
+        opt.textContent = lang==='en' ? opt.getAttribute('data-opt-en') : opt.getAttribute('data-opt-pl');
+      });
+    }
+    refreshFormLang();
+    window.__refreshFormLang = refreshFormLang;
+
+    function buildMailto(lang, name, company, email, service, message){
+      const subject = lang === 'en'
+        ? `Website inquiry — ${company || name || 'new lead'}`
+        : `Zapytanie ze strony — ${company || name || 'nowy kontakt'}`;
+      const bodyLines = lang === 'en' ? [
+        `Name: ${name}`, `Company: ${company || '-'}`, `Contact email: ${email}`,
+        `Service: ${service || '-'}`, '', 'Message:', message || '-'
+      ] : [
+        `Imię i nazwisko: ${name}`, `Nazwa firmy: ${company || '-'}`, `E-mail kontaktowy: ${email}`,
+        `Usługa: ${service || '-'}`, '', 'Wiadomość:', message || '-'
+      ];
+      return `mailto:oshipmediaagency@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+    }
+
+    function formatDeadline(lang){
+      const d = new Date(Date.now() + 48 * 60 * 60 * 1000);
+      return d.toLocaleString(lang === 'en' ? 'en-GB' : 'pl-PL', {
+        day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'
+      });
+    }
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      const lang = currentLang();
+      const name = form.name.value.trim();
+      const company = form.company.value.trim();
+      const email = form.email.value.trim();
+      const service = form.service.value;
+      const message = form.message.value.trim();
+      const deadlineStr = formatDeadline(lang);
+
+      const subject = lang === 'en'
+        ? `Website inquiry — ${company || name || 'new lead'}`
+        : `Zapytanie ze strony — ${company || name || 'nowy kontakt'}`;
+
+      let sentViaBackend = false;
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-loading');
+      try{
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: subject,
+            from_name: 'Oship Agency — formularz na stronie',
+            'Imię i nazwisko': name,
+            'Nazwa firmy': company || '-',
+            'E-mail kontaktowy': email,
+            'Usługa': service || '-',
+            'Wiadomość': message || '-',
+            'Termin odpowiedzi (48h)': deadlineStr
+          })
+        });
+        const data = await res.json();
+        sentViaBackend = !!data.success;
+      } catch(err){
+        sentViaBackend = false;
+      }
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('is-loading');
+
+      if (sentViaBackend){
+        form.style.display = 'none';
+        successEl.style.display = 'flex';
+      } else {
+        window.location.href = buildMailto(lang, name, company, email, service, message);
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
