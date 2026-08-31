@@ -379,6 +379,22 @@
   .about-copy-wide p{font-size:19px;}
   #onas{
     background:radial-gradient(ellipse 900px 500px at 50% 0%, rgba(201,162,39,0.05), transparent 70%), var(--bg);
+    position:relative; overflow:hidden;
+  }
+  .about-watermark{
+    position:absolute; top:-60px; right:-60px; width:380px; height:380px;
+    opacity:0.045; pointer-events:none; user-select:none; z-index:0; transform:rotate(-8deg);
+  }
+  .about-copy-card{
+    position:relative; z-index:1; background:var(--bg,#fff); border:1px solid var(--border);
+    border-radius:28px; padding:56px 60px; box-shadow:var(--shadow-md);
+  }
+  .about-copy-center .eyebrow{justify-content:center;}
+  .about-copy-center .founder-heading{flex-direction:column; gap:16px; text-align:center; margin-bottom:8px;}
+  .about-copy-center .founder-heading-avatar{width:84px; height:84px;}
+  .about-divider{width:44px; height:2px; background:var(--gold); margin:22px auto 30px; border-radius:2px;}
+  @media (max-width:680px){
+    .about-copy-card{padding:38px 26px;}
   }
   .founder{background:var(--bg-soft);}
   .about-copy p{color:var(--ink-soft); margin-bottom:16px; font-size:16px;}
@@ -828,13 +844,15 @@
 </section>
 
 <section class="about" id="onas">
+  <img src="assets/logo.png" alt="" aria-hidden="true" class="about-watermark">
   <div class="wrap about-wrap-single">
-    <div class="about-copy about-copy-wide">
+    <div class="about-copy about-copy-wide about-copy-card about-copy-center">
       <div class="eyebrow reveal"><span data-i18n-lang="pl">O nas</span><span data-i18n-lang="en">About</span></div>
       <div class="founder-heading reveal">
         <img src="assets/logo.png" alt="Oship Agency" class="founder-heading-avatar">
         <h2>Oship Agency</h2>
       </div>
+      <div class="about-divider" aria-hidden="true"></div>
       <p>
         <span data-i18n-lang="pl">Jesteśmy agencją mediów społecznościowych z Trójmiasta. Zauważyliśmy, że większość social mediów prowadzona jest według tego samego, powtarzalnego schematu. Dla nas każda firma jest inna, dlatego dla każdego klienta tworzymy indywidualny plan działania, patrząc na to, co stanowi jego prawdziwy „efekt WOW", tak żeby pokazać najlepsze atrybuty każdej marki.</span>
         <span data-i18n-lang="en">We're a social media agency from the Tri-City area. We've noticed that most agencies run social media using the same repeatable template. For us, every business is different, so we build an individual plan for each client based on what actually makes them stand out, their real "wow factor", to highlight each brand's strongest qualities.</span>
@@ -847,6 +865,50 @@
         <span data-i18n-lang="pl">Pracujemy głównie z lokalnymi biznesami z Trójmiasta, ale realizujemy też zlecenia na terenie całej Polski.</span>
         <span data-i18n-lang="en">We mostly work with local businesses in the Tri-City area, but we also take on projects across all of Poland.</span>
       </p>
+    </div>
+  </div>
+</section>
+
+<section class="about founder" id="founder">
+  <div class="wrap about-wrap-single">
+    <div class="about-copy about-copy-wide">
+      <div class="eyebrow reveal"><span data-i18n-lang="pl">Poznaj Foundera</span><span data-i18n-lang="en">Meet the Founder</span></div>
+      <div class="founder-heading reveal">
+        <img src="assets/personal/dawid-avatar.jpg" alt="Dawid Ostatek" class="founder-heading-avatar">
+        <h2>Dawid Ostatek</h2>
+      </div>
+      <p>
+        <span data-i18n-lang="pl">Jestem założycielem Oship Agency. Specjalizuję się w Social Media Managemencie i zajmuję się tym od 2 lat. Na co dzień prowadzę social media dla różnych firm, a przy okazji fotografuję eventy, dania i wiele innych wydarzeń.</span>
+        <span data-i18n-lang="en">I'm the founder of Oship Agency. I specialize in Social Media Management, and I've been doing it for 2 years. Day to day I run social media for different businesses, and I also shoot photos at events, food shoots and many other events.</span>
+      </p>
+      <p>
+        <span data-i18n-lang="pl">Agencję stworzyłem z pasji. Kocham nagrywać, fotografować i ogarniać wszystko, co dzieje się za kulisami. Zależy mi, żeby efekty podobały się nie tylko klientom, ale też ich odbiorcom, widzom w social mediach oraz gościom.</span>
+        <span data-i18n-lang="en">I started the agency out of passion. I love filming, photographing and handling everything that happens behind the scenes. What matters to me is that the results resonate not just with clients, but with their audience too, their followers online as well as the guests.</span>
+      </p>
+      <div class="founder-line-row reveal">
+        <div class="founder-line">
+          <img src="assets/personal/dawid-avatar.jpg" alt="Dawid Ostatek">
+          <div>
+            <b>Dawid Ostatek</b>
+            <span data-i18n-lang="pl">Założyciel &amp; CEO</span>
+            <span data-i18n-lang="en">Founder &amp; CEO</span>
+          </div>
+        </div>
+        <div class="founder-social">
+          <div class="founder-social-label">
+            <span data-i18n-lang="pl">Znajdziesz mnie tutaj</span>
+            <span data-i18n-lang="en">Find me here</span>
+          </div>
+          <div class="founder-social-row">
+            <a class="founder-social-item" href="https://www.instagram.com/dawidostatek_/" target="_blank" rel="noopener" aria-label="Instagram">
+              <div class="founder-social-ring"><div class="founder-social-ring-inner"><svg><use href="#icon-instagram"/></svg></div></div>
+            </a>
+            <a class="founder-social-item" href="https://www.tiktok.com/@dawidostatek_" target="_blank" rel="noopener" aria-label="TikTok">
+              <div class="founder-social-ring"><div class="founder-social-ring-inner"><svg><use href="#icon-tiktok"/></svg></div></div>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -995,50 +1057,6 @@
 
 <span id="cennik" class="anchor-placeholder"></span>
 
-<section class="about founder" id="founder">
-  <div class="wrap about-wrap-single">
-    <div class="about-copy about-copy-wide">
-      <div class="eyebrow reveal"><span data-i18n-lang="pl">Poznaj Foundera</span><span data-i18n-lang="en">Meet the Founder</span></div>
-      <div class="founder-heading reveal">
-        <img src="assets/personal/dawid-avatar.jpg" alt="Dawid Ostatek" class="founder-heading-avatar">
-        <h2>Dawid Ostatek</h2>
-      </div>
-      <p>
-        <span data-i18n-lang="pl">Jestem założycielem Oship Agency. Specjalizuję się w Social Media Managemencie i zajmuję się tym od 2 lat. Na co dzień prowadzę social media dla różnych firm, a przy okazji fotografuję eventy, dania i wiele innych eventów.</span>
-        <span data-i18n-lang="en">I'm the founder of Oship Agency. I specialize in Social Media Management, and I've been doing it for 2 years. Day to day I run social media for different businesses, and I also shoot photos at events, food shoots and many other events.</span>
-      </p>
-      <p>
-        <span data-i18n-lang="pl">Agencję stworzyłem z pasji. Kocham nagrywać, fotografować i ogarniać wszystko, co dzieje się za kulisami. Zależy mi, żeby efekty podobały się nie tylko klientom, ale też ich odbiorcom, widzom w social mediach oraz gościom.</span>
-        <span data-i18n-lang="en">I started the agency out of passion. I love filming, photographing and handling everything that happens behind the scenes. What matters to me is that the results resonate not just with clients, but with their audience too, their followers online as well as the guests.</span>
-      </p>
-      <div class="founder-line-row reveal">
-        <div class="founder-line">
-          <img src="assets/personal/dawid-avatar.jpg" alt="Dawid Ostatek">
-          <div>
-            <b>Dawid Ostatek</b>
-            <span data-i18n-lang="pl">Założyciel &amp; CEO</span>
-            <span data-i18n-lang="en">Founder &amp; CEO</span>
-          </div>
-        </div>
-        <div class="founder-social">
-          <div class="founder-social-label">
-            <span data-i18n-lang="pl">Znajdziesz mnie tutaj</span>
-            <span data-i18n-lang="en">Find me here</span>
-          </div>
-          <div class="founder-social-row">
-            <a class="founder-social-item" href="https://www.instagram.com/dawidostatek_/" target="_blank" rel="noopener" aria-label="Instagram">
-              <div class="founder-social-ring"><div class="founder-social-ring-inner"><svg><use href="#icon-instagram"/></svg></div></div>
-            </a>
-            <a class="founder-social-item" href="https://www.tiktok.com/@dawidostatek_" target="_blank" rel="noopener" aria-label="TikTok">
-              <div class="founder-social-ring"><div class="founder-social-ring-inner"><svg><use href="#icon-tiktok"/></svg></div></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="kontakt" id="kontakt">
   <div class="wrap">
     <div class="eyebrow reveal"><span data-i18n-lang="pl">Kontakt</span><span data-i18n-lang="en">Contact</span></div>
@@ -1055,7 +1073,7 @@
 
 <footer>
   <img src="assets/logo.png" alt="" class="footer-mark" aria-hidden="true">
-  <span>© 2026 Oship Agency · Trójmiasto, Polska · <span data-i18n-lang="pl">wersja robocza · podgląd</span><span data-i18n-lang="en">draft · preview</span></span>
+  <span>© 2026 Oship Agency · Trójmiasto, Polska</span>
 </footer>
 
 <div class="photo-gallery-overlay" id="photoGalleryOverlay">
